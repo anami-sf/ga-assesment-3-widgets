@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .forms import WidgetForm
 from .models import Widget
 
 # Create your views here.
@@ -6,14 +7,13 @@ from .models import Widget
 def home(request): 
     widgets = Widget.objects.all( )
 
-# if request.method == ‘POST’:
-#     form = PokemonForm(reques.POST )
-#         if form.is_valid( )
-#             form.save( )
-#             return redirect(‘home’)    
+    if request.method == 'POST':
+        form = WidgetForm(reques.POST)
+        if form.is_valid( ):
+            form.save( )
+        return redirect('home')    
 
-# else:
-#     form = PokemonForm( )
+    else:
+        form = WidgetForm( )
 
-#{‘form’: form} ,     
-    return render(request, 'home.html', {'widgets': widgets})
+    return render(request, 'home.html', {'form': form, 'widgets': widgets})
