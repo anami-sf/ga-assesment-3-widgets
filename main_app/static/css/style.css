@@ -1,0 +1,24 @@
+body {
+    text-align: center;
+    margin: 2rem;
+}
+
+h1 {
+    color: teal;
+}
+
+label {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    padding: 3px;
+}
+
+table {
+    margin: 2rem auto;
+}
+
+table a {
+    color: red;
+    text-decoration: none;
+}
