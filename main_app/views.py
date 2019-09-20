@@ -8,7 +8,7 @@ def home(request):
     widgets = Widget.objects.all( )
 
     if request.method == 'POST':
-        form = WidgetForm(reques.POST)
+        form = WidgetForm(request.POST)
         if form.is_valid( ):
             form.save( )
         return redirect('home')    
@@ -17,3 +17,8 @@ def home(request):
         form = WidgetForm( )
 
     return render(request, 'home.html', {'form': form, 'widgets': widgets})
+
+def delete(request, widget_id):
+    order = Widget.objects.get(id=widget_id)
+    order.delete( )
+    return redirect('home')
